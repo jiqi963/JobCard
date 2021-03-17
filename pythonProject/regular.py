@@ -5,6 +5,8 @@ from docx.shared import Inches
 from docx.shared import Pt
 from docx.shared import Cm
 from docx.oxml.ns import qn
+import pickle
+
 
 document = Document()
 
@@ -19,7 +21,12 @@ section.page_height = page_h
 section.left_margin, section.right_margin = Inches(0.2), Inches(0.2)
 section.top_margin, section.bottom_margin = Inches(0.2), Inches(0.2)
 
-jobNumber = str(4000)
+# read jobNumber from file
+file = open('var', 'rb')
+jobNumber = pickle.load(file)
+file.close()
+
+print('Job number start from ' + str(jobNumber))
 
 # Add a new table
 table = document.add_table(rows=13, cols=2, style='Table Grid')
@@ -45,7 +52,7 @@ table.cell(7, 1).merge(table.cell(9, 1))
 table.cell(11, 1).merge(table.cell(12, 1))
 
 # Add text to each cells
-table.cell(0, 0).text = "Job Number " + jobNumber
+table.cell(0, 0).text = "Job Number " + str(jobNumber)
 table.cell(1, 0).text = "Date:"
 table.cell(3, 0).text = "Client:"
 table.cell(5, 0).text = "Phone & Email:"
@@ -73,6 +80,7 @@ paragraph_format = paragraph.paragraph_format
 paragraph_format.space_before, paragraph_format.space_after = (20, 20)
 paragraph_format.line_spacing = Pt(18)
 
+jobNumber +=1
 table = document.add_table(rows=13, cols=2, style='Table Grid')
 table.rows[0].height = Cm(1)
 table.rows[1].height = Cm(1)
@@ -87,7 +95,7 @@ table.cell(8, 0).merge(table.cell(9, 0))
 table.cell(10, 0).merge(table.cell(12, 0))
 table.cell(0, 0).merge(table.cell(0, 1))
 
-table.cell(0, 0).text = "Job Number " + jobNumber
+table.cell(0, 0).text = "Job Number: " + str(jobNumber)
 table.cell(1, 0).text = "Date:"
 table.cell(3, 0).text = "Client:"
 table.cell(5, 0).text = "Phone & Email:"
@@ -115,6 +123,7 @@ paragraph = document.add_paragraph()
 
 paragraph_format.line_spacing = 1.75
 
+jobNumber +=1
 table = document.add_table(rows=13, cols=2, style='Table Grid')
 table.rows[0].height = Cm(1)
 table.rows[1].height = Cm(1)
@@ -129,7 +138,7 @@ table.cell(8, 0).merge(table.cell(9, 0))
 table.cell(10, 0).merge(table.cell(12, 0))
 table.cell(0, 0).merge(table.cell(0, 1))
 
-table.cell(0, 0).text = "Job Number " + jobNumber
+table.cell(0, 0).text = "Job Number: " + str(jobNumber)
 table.cell(1, 0).text = "Date:"
 table.cell(3, 0).text = "Client:"
 table.cell(5, 0).text = "Phone & Email:"
@@ -155,6 +164,7 @@ table.cell(11, 1).text = "To Invoice:"
 
 paragraph = document.add_paragraph()
 
+jobNumber +=1
 table = document.add_table(rows=13, cols=2, style='Table Grid')
 table.rows[0].height = Cm(1)
 table.rows[1].height = Cm(1)
@@ -169,7 +179,7 @@ table.cell(8, 0).merge(table.cell(9, 0))
 table.cell(10, 0).merge(table.cell(12, 0))
 table.cell(0, 0).merge(table.cell(0, 1))
 
-table.cell(0, 0).text = "Job Number " + jobNumber
+table.cell(0, 0).text = "Job Number: " + str(jobNumber)
 table.cell(1, 0).text = "Date:"
 table.cell(3, 0).text = "Client:"
 table.cell(5, 0).text = "Phone & Email:"
@@ -193,4 +203,9 @@ table.cell(7, 1).text = "Work Done:" \
 table.cell(10, 1).text = "Misc Notes:"
 table.cell(11, 1).text = "To Invoice:"
 
-document.save('test.docx')
+# save jobNumber in file.
+file = open('var', 'wb')
+pickle.dump(jobNumber, file)
+file.close()
+
+document.save('JobCard.docx')
