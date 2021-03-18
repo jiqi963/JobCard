@@ -2,24 +2,23 @@
 from docx import Document
 from docx.enum.section import WD_ORIENTATION
 from docx.shared import Inches
-from docx.shared import Pt
 from docx.shared import Cm
 from docx.oxml.ns import qn
 import pickle
-
 
 document = Document()
 
 # set up page to landscape
 section = document.sections[0]
 section.orientation = WD_ORIENTATION.LANDSCAPE
-page_h, page_w = section.page_width, section.page_height
-section.page_width = page_w
-section.page_height = page_h
+
+# set the page size to A4
+section.page_width = Cm(29.7)
+section.page_height = Cm(21)
 
 # set up page margins
-section.left_margin, section.right_margin = Inches(0.2), Inches(0.2)
-section.top_margin, section.bottom_margin = Inches(0.2), Inches(0.2)
+section.left_margin, section.right_margin = Inches(0.4), Inches(0.4)
+section.top_margin, section.bottom_margin = Inches(0.2), Inches(0.1)
 
 jobNumber = 4000
 
@@ -71,11 +70,9 @@ section._sectPr.xpath('./w:cols')[0].set(qn('w:num'), '2')
 
 # Add a space between two tables
 paragraph = document.add_paragraph()
-paragraph_format = paragraph.paragraph_format
-paragraph_format.space_before, paragraph_format.space_after = (20, 20)
-paragraph_format.line_spacing = Pt(18)
 
 jobNumber +=1
+
 table = document.add_table(rows=13, cols=2, style='Table Grid')
 table.rows[0].height = Cm(1)
 table.rows[1].height = Cm(1)
@@ -114,9 +111,7 @@ table.cell(7, 1).text = "Work Done:" \
 table.cell(10, 1).text = "Misc Notes:"
 table.cell(11, 1).text = "To Invoice:"
 
-paragraph = document.add_paragraph()
-
-paragraph_format.line_spacing = 1.75
+# paragraph = document.add_paragraph()
 
 jobNumber +=1
 table = document.add_table(rows=13, cols=2, style='Table Grid')
