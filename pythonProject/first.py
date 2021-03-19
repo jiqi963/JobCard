@@ -5,6 +5,15 @@ from docx.shared import Inches
 from docx.shared import Cm
 from docx.oxml.ns import qn
 import pickle
+import win32com
+from self import self
+from win32com.client import Dispatch
+import tempfile
+
+
+import win32api
+import win32print
+import os, sys
 
 document = Document()
 
@@ -199,3 +208,15 @@ pickle.dump(jobNumber, file)
 file.close()
 
 document.save('JobCard.docx')
+
+
+path = ("JobCard.docx")
+win32api.ShellExecute (
+ 0,
+ "printto",
+ path,
+ '"%s"' % win32print.GetDefaultPrinter (),
+ ".",
+ 0
+)
+
