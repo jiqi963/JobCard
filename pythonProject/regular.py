@@ -1,11 +1,11 @@
 # import libraries
 from docx import Document
 from docx.enum.section import WD_ORIENTATION
-from docx.shared import Inches
-from docx.shared import Pt
 from docx.shared import Cm
 from docx.oxml.ns import qn
 import pickle
+import win32api
+import win32print
 
 document = Document()
 
@@ -18,8 +18,8 @@ section.page_width = Cm(29.7)
 section.page_height = Cm(21)
 
 # set up page margins
-section.left_margin, section.right_margin = Inches(0.4), Inches(0.4)
-section.top_margin, section.bottom_margin = Inches(0.2), Inches(0.1)
+section.left_margin, section.right_margin = Cm(1), Cm(1)
+section.top_margin, section.bottom_margin = Cm(0.4), Cm(0.4)
 
 # read jobNumber from file
 file = open('var', 'rb')
@@ -78,9 +78,6 @@ section._sectPr.xpath('./w:cols')[0].set(qn('w:num'), '2')
 
 # Add a space between two tables
 paragraph = document.add_paragraph()
-paragraph_format = paragraph.paragraph_format
-paragraph_format.space_before, paragraph_format.space_after = (20, 20)
-paragraph_format.line_spacing = Pt(18)
 
 jobNumber +=1
 table = document.add_table(rows=13, cols=2, style='Table Grid')
@@ -122,8 +119,6 @@ table.cell(10, 1).text = "Misc Notes:"
 table.cell(11, 1).text = "To Invoice:"
 
 paragraph = document.add_paragraph()
-
-paragraph_format.line_spacing = 1.75
 
 jobNumber +=1
 table = document.add_table(rows=13, cols=2, style='Table Grid')
@@ -211,3 +206,13 @@ pickle.dump(jobNumber, file)
 file.close()
 
 document.save('JobCard.docx')
+
+# path = ("JobCard.docx")
+# win32api.ShellExecute (
+#  0,
+#  "printto",
+#  path,
+#  '"%s"' % win32print.GetDefaultPrinter (),
+#  ".",
+#  0
+# )

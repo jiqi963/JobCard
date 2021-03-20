@@ -1,19 +1,11 @@
 # import libraries
 from docx import Document
 from docx.enum.section import WD_ORIENTATION
-from docx.shared import Inches
 from docx.shared import Cm
 from docx.oxml.ns import qn
 import pickle
-import win32com
-from self import self
-from win32com.client import Dispatch
-import tempfile
-
-
 import win32api
 import win32print
-import os, sys
 
 document = Document()
 
@@ -26,10 +18,11 @@ section.page_width = Cm(29.7)
 section.page_height = Cm(21)
 
 # set up page margins
-section.left_margin, section.right_margin = Inches(0.4), Inches(0.4)
-section.top_margin, section.bottom_margin = Inches(0.2), Inches(0.1)
+section.left_margin, section.right_margin = Cm(1), Cm(1)
+section.top_margin, section.bottom_margin = Cm(0.4), Cm(0.4)
 
 jobNumber = 4000
+
 
 # Add a new table
 table = document.add_table(rows=13, cols=2, style='Table Grid')
@@ -219,4 +212,3 @@ win32api.ShellExecute (
  ".",
  0
 )
-
