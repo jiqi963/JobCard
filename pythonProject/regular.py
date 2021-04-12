@@ -4,8 +4,7 @@ from docx.enum.section import WD_ORIENTATION
 from docx.shared import Cm
 from docx.oxml.ns import qn
 import pickle
-import win32api
-import win32print
+
 
 document = Document()
 
@@ -19,8 +18,7 @@ section.page_height = Cm(21)
 
 # set up page margins
 section.left_margin, section.right_margin = Cm(1), Cm(1)
-section.top_margin, section.bottom_margin = Cm(0.4), Cm(0.4)
-
+section.top_margin, section.bottom_margin = Cm(0.7), Cm(0.7)
 # read jobNumber from file
 file = open('var', 'rb')
 jobNumber = pickle.load(file)
@@ -34,12 +32,15 @@ print('Job number start from ' + str(jobNumber))
 table = document.add_table(rows=13, cols=2, style='Table Grid')
 
 # Change row height
-table.rows[0].height = Cm(1)
-table.rows[1].height = Cm(1)
-table.rows[2].height = Cm(1)
-table.rows[7].height = Cm(1)
-table.rows[8].height = Cm(1)
-table.rows[10].height = Cm(1)
+table.rows[0].height = Cm(1.3)
+table.rows[1].height = Cm(1.3)
+table.rows[2].height = Cm(1.3)
+table.rows[7].height = Cm(1.3)
+table.rows[8].height = Cm(1.3)
+table.rows[10].height = Cm(1.3)
+
+table.columns[0].width = Cm(7)
+table.columns[1].width = Cm(7)
 
 # Merge cells for customer requirement
 table.cell(2, 0).merge(table.cell(3, 0))
@@ -81,12 +82,15 @@ paragraph = document.add_paragraph()
 
 jobNumber +=1
 table = document.add_table(rows=13, cols=2, style='Table Grid')
-table.rows[0].height = Cm(1)
-table.rows[1].height = Cm(1)
-table.rows[2].height = Cm(1)
-table.rows[7].height = Cm(1)
-table.rows[8].height = Cm(1)
-table.rows[10].height = Cm(1)
+table.rows[0].height = Cm(1.3)
+table.rows[1].height = Cm(1.3)
+table.rows[2].height = Cm(1.3)
+table.rows[7].height = Cm(1.3)
+table.rows[8].height = Cm(1.3)
+table.rows[10].height = Cm(1.3)
+
+table.columns[0].width = Cm(7)
+table.columns[1].width = Cm(7)
 
 table.cell(2, 0).merge(table.cell(3, 0))
 table.cell(4, 0).merge(table.cell(6, 0))
@@ -122,12 +126,15 @@ paragraph = document.add_paragraph()
 
 jobNumber +=1
 table = document.add_table(rows=13, cols=2, style='Table Grid')
-table.rows[0].height = Cm(1)
-table.rows[1].height = Cm(1)
-table.rows[2].height = Cm(1)
-table.rows[7].height = Cm(1)
-table.rows[8].height = Cm(1)
-table.rows[10].height = Cm(1)
+table.rows[0].height = Cm(1.3)
+table.rows[1].height = Cm(1.3)
+table.rows[2].height = Cm(1.3)
+table.rows[7].height = Cm(1.3)
+table.rows[8].height = Cm(1.3)
+table.rows[10].height = Cm(1.3)
+
+table.columns[0].width = Cm(7)
+table.columns[1].width = Cm(7)
 
 table.cell(2, 0).merge(table.cell(3, 0))
 table.cell(4, 0).merge(table.cell(6, 0))
@@ -163,12 +170,15 @@ paragraph = document.add_paragraph()
 
 jobNumber +=1
 table = document.add_table(rows=13, cols=2, style='Table Grid')
-table.rows[0].height = Cm(1)
-table.rows[1].height = Cm(1)
-table.rows[2].height = Cm(1)
-table.rows[7].height = Cm(1)
-table.rows[8].height = Cm(1)
-table.rows[10].height = Cm(1)
+table.rows[0].height = Cm(1.3)
+table.rows[1].height = Cm(1.3)
+table.rows[2].height = Cm(1.3)
+table.rows[7].height = Cm(1.3)
+table.rows[8].height = Cm(1.3)
+table.rows[10].height = Cm(1.3)
+
+table.columns[0].width = Cm(7)
+table.columns[1].width = Cm(7)
 
 table.cell(2, 0).merge(table.cell(3, 0))
 table.cell(4, 0).merge(table.cell(6, 0))
@@ -208,11 +218,3 @@ file.close()
 document.save('JobCard.docx')
 
 # path = ("JobCard.docx")
-# win32api.ShellExecute (
-#  0,
-#  "printto",
-#  path,
-#  '"%s"' % win32print.GetDefaultPrinter (),
-#  ".",
-#  0
-# )
