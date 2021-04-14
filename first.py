@@ -209,7 +209,7 @@ table.cell(10, 1).text = "Misc Notes:"
 table.cell(11, 1).text = "To Invoice:"
 
 # save jobNumber in file.
-file = open('var', 'wb')
+file = open('var.txt', 'wb')
 pickle.dump(jobNumber, file)
 file.close()
 
