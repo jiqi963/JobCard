@@ -33,8 +33,8 @@ table.rows[7].height = Cm(1.3)
 table.rows[8].height = Cm(1.3)
 table.rows[10].height = Cm(1.3)
 
-table.columns[0].width = Cm(7)
-table.columns[1].width = Cm(7)
+table.columns[0].width = Cm(6.8)
+table.columns[1].width = Cm(6.8)
 
 # Merge cells for customer requirement
 table.cell(2, 0).merge(table.cell(3, 0))
@@ -84,8 +84,8 @@ table.rows[7].height = Cm(1.3)
 table.rows[8].height = Cm(1.3)
 table.rows[10].height = Cm(1.3)
 
-table.columns[0].width = Cm(7)
-table.columns[1].width = Cm(7)
+table.columns[0].width = Cm(6.8)
+table.columns[1].width = Cm(6.8)
 
 
 table.cell(2, 0).merge(table.cell(3, 0))
@@ -129,8 +129,8 @@ table.rows[7].height = Cm(1.3)
 table.rows[8].height = Cm(1.3)
 table.rows[10].height = Cm(1.3)
 
-table.columns[0].width = Cm(7)
-table.columns[1].width = Cm(7)
+table.columns[0].width = Cm(6.8)
+table.columns[1].width = Cm(6.8)
 
 
 table.cell(2, 0).merge(table.cell(3, 0))
@@ -174,8 +174,8 @@ table.rows[7].height = Cm(1.3)
 table.rows[8].height = Cm(1.3)
 table.rows[10].height = Cm(1.3)
 
-table.columns[0].width = Cm(7)
-table.columns[1].width = Cm(7)
+table.columns[0].width = Cm(6.8)
+table.columns[1].width = Cm(6.8)
 
 
 table.cell(2, 0).merge(table.cell(3, 0))
