@@ -30,50 +30,47 @@ jobNumber += 1
 print('Job number start from ' + str(jobNumber))
 
 # Add a new table
-table = document.add_table(rows=13, cols=2, style='Table Grid')
+table = document.add_table(rows=8, cols=2, style='Table Grid')
 
 # Change row height
-table.rows[0].height = Cm(1.3)
-table.rows[1].height = Cm(1.3)
-table.rows[2].height = Cm(1.3)
-table.rows[7].height = Cm(1.3)
-table.rows[8].height = Cm(1.3)
-table.rows[10].height = Cm(1.3)
+table.rows[0].height = Cm(1.1)
+table.rows[1].height = Cm(1.1)
+table.rows[2].height = Cm(1.1)
+table.rows[3].height = Cm(1.1)
+table.rows[4].height = Cm(1.1)
+table.rows[5].height = Cm(1.1)
+table.rows[6].height = Cm(1.1)
+table.rows[7].height = Cm(1.1)
 
 table.columns[0].width = Cm(6.8)
 table.columns[1].width = Cm(6.8)
 
-# Merge cells for customer requirement
-table.cell(2, 0).merge(table.cell(3, 0))
-table.cell(4, 0).merge(table.cell(6, 0))
-table.cell(8, 0).merge(table.cell(9, 0))
-table.cell(10, 0).merge(table.cell(12, 0))
-table.cell(0, 0).merge(table.cell(0, 1))
+table.cell(1, 0).merge(table.cell(2, 0))
+table.cell(4, 0).merge(table.cell(4, 1))
+table.cell(5, 1).merge(table.cell(7, 1))
 
-table.cell(1, 1).merge(table.cell(3, 1))
-table.cell(4, 1).merge(table.cell(6, 1))
-table.cell(7, 1).merge(table.cell(9, 1))
-table.cell(11, 1).merge(table.cell(12, 1))
 
 # Add text to each cells
 table.cell(0, 0).text = "Job Number " + str(jobNumber)
-table.cell(1, 0).text = "Date:"
-table.cell(3, 0).text = "Client:"
-table.cell(5, 0).text = "Phone & Email:"
-table.cell(7, 0).text = "Password:"
-table.cell(9, 0).text = "Parts:"
-table.cell(10, 0).text = "Items Serviced:"
+table.cell(1, 0).text = "Client:"
+table.cell(3, 0).text = "Password:"
+table.cell(4, 0).text = "Address:"
+table.cell(5, 0).text = "Issue:"
+table.cell(6, 0).text = "Items Serviced:"
+table.cell(7, 0).text = "To Invoice"
 
-table.cell(1, 1).text = "Address:"
-table.cell(4, 1).text = "Issue:"
-table.cell(7, 1).text = "Work Done:" \
+table.cell(0, 1).text = "Date:"
+table.cell(1, 1).text = "Phone:"
+table.cell(2, 1).text = "Email:"
+table.cell(3, 1).text = "Parts:"
+table.cell(5, 1).text = "Work Done:" \
                         "\n" \
                         "\n" \
                         "\n" \
                         "\n" \
-                        "Data Saved? Y / N"
-table.cell(10, 1).text = "Misc Notes:"
-table.cell(11, 1).text = "To Invoice:"
+                        "\n" \
+                        "\n" \
+                        "Data Saved?  Y / N"
 
 # Add a new column, split in the middle
 section._sectPr.xpath('./w:cols')[0].set(qn('w:num'), '2')
@@ -82,134 +79,143 @@ section._sectPr.xpath('./w:cols')[0].set(qn('w:num'), '2')
 paragraph = document.add_paragraph()
 
 jobNumber +=1
-table = document.add_table(rows=13, cols=2, style='Table Grid')
-table.rows[0].height = Cm(1.3)
-table.rows[1].height = Cm(1.3)
-table.rows[2].height = Cm(1.3)
-table.rows[7].height = Cm(1.3)
-table.rows[8].height = Cm(1.3)
-table.rows[10].height = Cm(1.3)
+
+# Add a new table
+table = document.add_table(rows=8, cols=2, style='Table Grid')
+
+# Change row height
+table.rows[0].height = Cm(1.1)
+table.rows[1].height = Cm(1.1)
+table.rows[2].height = Cm(1.1)
+table.rows[3].height = Cm(1.1)
+table.rows[4].height = Cm(1.1)
+table.rows[5].height = Cm(1.1)
+table.rows[6].height = Cm(1.1)
+table.rows[7].height = Cm(1.1)
 
 table.columns[0].width = Cm(6.8)
 table.columns[1].width = Cm(6.8)
 
-table.cell(2, 0).merge(table.cell(3, 0))
-table.cell(4, 0).merge(table.cell(6, 0))
-table.cell(8, 0).merge(table.cell(9, 0))
-table.cell(10, 0).merge(table.cell(12, 0))
-table.cell(0, 0).merge(table.cell(0, 1))
+table.cell(1, 0).merge(table.cell(2, 0))
+table.cell(4, 0).merge(table.cell(4, 1))
+table.cell(5, 1).merge(table.cell(7, 1))
 
-table.cell(0, 0).text = "Job Number: " + str(jobNumber)
-table.cell(1, 0).text = "Date:"
-table.cell(3, 0).text = "Client:"
-table.cell(5, 0).text = "Phone & Email:"
-table.cell(7, 0).text = "Password:"
-table.cell(9, 0).text = "Parts:"
-table.cell(10, 0).text = "Items Serviced:"
 
-table.cell(1, 1).merge(table.cell(3, 1))
-table.cell(4, 1).merge(table.cell(6, 1))
-table.cell(7, 1).merge(table.cell(9, 1))
-table.cell(11, 1).merge(table.cell(12, 1))
+# Add text to each cells
+table.cell(0, 0).text = "Job Number " + str(jobNumber)
+table.cell(1, 0).text = "Client:"
+table.cell(3, 0).text = "Password:"
+table.cell(4, 0).text = "Address:"
+table.cell(5, 0).text = "Issue:"
+table.cell(6, 0).text = "Items Serviced:"
+table.cell(7, 0).text = "To Invoice"
 
-table.cell(1, 1).text = "Address:"
-table.cell(4, 1).text = "Issue:"
-table.cell(7, 1).text = "Work Done:" \
+table.cell(0, 1).text = "Date:"
+table.cell(1, 1).text = "Phone:"
+table.cell(2, 1).text = "Email:"
+table.cell(3, 1).text = "Parts:"
+table.cell(5, 1).text = "Work Done:" \
                         "\n" \
                         "\n" \
                         "\n" \
                         "\n" \
-                        "Data Saved? Y / N"
-table.cell(10, 1).text = "Misc Notes:"
-table.cell(11, 1).text = "To Invoice:"
+                        "\n" \
+                        "\n" \
+                        "Data Saved?  Y / N"
 
 paragraph = document.add_paragraph()
 
 jobNumber +=1
-table = document.add_table(rows=13, cols=2, style='Table Grid')
-table.rows[0].height = Cm(1.3)
-table.rows[1].height = Cm(1.3)
-table.rows[2].height = Cm(1.3)
-table.rows[7].height = Cm(1.3)
-table.rows[8].height = Cm(1.3)
-table.rows[10].height = Cm(1.3)
+
+# Add a new table
+table = document.add_table(rows=8, cols=2, style='Table Grid')
+
+# Change row height
+table.rows[0].height = Cm(1.1)
+table.rows[1].height = Cm(1.1)
+table.rows[2].height = Cm(1.1)
+table.rows[3].height = Cm(1.1)
+table.rows[4].height = Cm(1.1)
+table.rows[5].height = Cm(1.1)
+table.rows[6].height = Cm(1.1)
+table.rows[7].height = Cm(1.1)
 
 table.columns[0].width = Cm(6.8)
 table.columns[1].width = Cm(6.8)
 
-table.cell(2, 0).merge(table.cell(3, 0))
-table.cell(4, 0).merge(table.cell(6, 0))
-table.cell(8, 0).merge(table.cell(9, 0))
-table.cell(10, 0).merge(table.cell(12, 0))
-table.cell(0, 0).merge(table.cell(0, 1))
+table.cell(1, 0).merge(table.cell(2, 0))
+table.cell(4, 0).merge(table.cell(4, 1))
+table.cell(5, 1).merge(table.cell(7, 1))
 
-table.cell(0, 0).text = "Job Number: " + str(jobNumber)
-table.cell(1, 0).text = "Date:"
-table.cell(3, 0).text = "Client:"
-table.cell(5, 0).text = "Phone & Email:"
-table.cell(7, 0).text = "Password:"
-table.cell(9, 0).text = "Parts:"
-table.cell(10, 0).text = "Items Serviced:"
 
-table.cell(1, 1).merge(table.cell(3, 1))
-table.cell(4, 1).merge(table.cell(6, 1))
-table.cell(7, 1).merge(table.cell(9, 1))
-table.cell(11, 1).merge(table.cell(12, 1))
+# Add text to each cells
+table.cell(0, 0).text = "Job Number " + str(jobNumber)
+table.cell(1, 0).text = "Client:"
+table.cell(3, 0).text = "Password:"
+table.cell(4, 0).text = "Address:"
+table.cell(5, 0).text = "Issue:"
+table.cell(6, 0).text = "Items Serviced:"
+table.cell(7, 0).text = "To Invoice"
 
-table.cell(1, 1).text = "Address:"
-table.cell(4, 1).text = "Issue:"
-table.cell(7, 1).text = "Work Done:" \
+table.cell(0, 1).text = "Date:"
+table.cell(1, 1).text = "Phone:"
+table.cell(2, 1).text = "Email:"
+table.cell(3, 1).text = "Parts:"
+table.cell(5, 1).text = "Work Done:" \
                         "\n" \
                         "\n" \
                         "\n" \
                         "\n" \
-                        "Data Saved? Y / N"
-table.cell(10, 1).text = "Misc Notes:"
-table.cell(11, 1).text = "To Invoice:"
+                        "\n" \
+                        "\n" \
+                        "Data Saved?  Y / N"
 
 paragraph = document.add_paragraph()
 
 jobNumber +=1
-table = document.add_table(rows=13, cols=2, style='Table Grid')
-table.rows[0].height = Cm(1.3)
-table.rows[1].height = Cm(1.3)
-table.rows[2].height = Cm(1.3)
-table.rows[7].height = Cm(1.3)
-table.rows[8].height = Cm(1.3)
-table.rows[10].height = Cm(1.3)
+
+# Add a new table
+table = document.add_table(rows=8, cols=2, style='Table Grid')
+
+# Change row height
+table.rows[0].height = Cm(1.1)
+table.rows[1].height = Cm(1.1)
+table.rows[2].height = Cm(1.1)
+table.rows[3].height = Cm(1.1)
+table.rows[4].height = Cm(1.1)
+table.rows[5].height = Cm(1.1)
+table.rows[6].height = Cm(1.1)
+table.rows[7].height = Cm(1.1)
 
 table.columns[0].width = Cm(6.8)
 table.columns[1].width = Cm(6.8)
 
-table.cell(2, 0).merge(table.cell(3, 0))
-table.cell(4, 0).merge(table.cell(6, 0))
-table.cell(8, 0).merge(table.cell(9, 0))
-table.cell(10, 0).merge(table.cell(12, 0))
-table.cell(0, 0).merge(table.cell(0, 1))
+table.cell(1, 0).merge(table.cell(2, 0))
+table.cell(4, 0).merge(table.cell(4, 1))
+table.cell(5, 1).merge(table.cell(7, 1))
 
-table.cell(0, 0).text = "Job Number: " + str(jobNumber)
-table.cell(1, 0).text = "Date:"
-table.cell(3, 0).text = "Client:"
-table.cell(5, 0).text = "Phone & Email:"
-table.cell(7, 0).text = "Password:"
-table.cell(9, 0).text = "Parts:"
-table.cell(10, 0).text = "Items Serviced:"
 
-table.cell(1, 1).merge(table.cell(3, 1))
-table.cell(4, 1).merge(table.cell(6, 1))
-table.cell(7, 1).merge(table.cell(9, 1))
-table.cell(11, 1).merge(table.cell(12, 1))
+# Add text to each cells
+table.cell(0, 0).text = "Job Number " + str(jobNumber)
+table.cell(1, 0).text = "Client:"
+table.cell(3, 0).text = "Password:"
+table.cell(4, 0).text = "Address:"
+table.cell(5, 0).text = "Issue:"
+table.cell(6, 0).text = "Items Serviced:"
+table.cell(7, 0).text = "To Invoice"
 
-table.cell(1, 1).text = "Address:"
-table.cell(4, 1).text = "Issue:"
-table.cell(7, 1).text = "Work Done:" \
+table.cell(0, 1).text = "Date:"
+table.cell(1, 1).text = "Phone:"
+table.cell(2, 1).text = "Email:"
+table.cell(3, 1).text = "Parts:"
+table.cell(5, 1).text = "Work Done:" \
                         "\n" \
                         "\n" \
                         "\n" \
                         "\n" \
-                        "Data Saved? Y / N"
-table.cell(10, 1).text = "Misc Notes:"
-table.cell(11, 1).text = "To Invoice:"
+                        "\n" \
+                        "\n" \
+                        "Data Saved?  Y / N"
 
 # save jobNumber in file.
 file = open('var', 'wb')
