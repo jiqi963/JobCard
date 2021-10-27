@@ -19,7 +19,7 @@ section.page_height = Cm(21)
 section.left_margin, section.right_margin = Cm(1), Cm(1)
 section.top_margin, section.bottom_margin = Cm(0.7), Cm(0.7)
 
-jobNumber = 4060
+jobNumber = 4103
 
 
 # Add a new table
@@ -211,7 +211,7 @@ table.cell(5, 1).text = "Work Done:" \
                         "Data Saved?  Y / N"
 
 # save jobNumber in file.
-file = open('var.txt', 'wb')
+file = open('var', 'wb')
 pickle.dump(jobNumber, file)
 file.close()
 
