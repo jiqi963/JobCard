@@ -7,6 +7,12 @@ Use python code to print Job Card
 # Set up
 Install python and the [library docx](https://python-docx.readthedocs.io/en/latest/)
 
+# listing all printer
+lpstat -p -d
+
+# set up default printer
+lpoptions -d <printer>
+
 
 # Documentation
 
